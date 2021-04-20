@@ -1,90 +1,73 @@
-<!DOCTYPE html>
 <html>
     <head>
-        <title>ADTIX_AVIATION | HOME</title>
+        <title>Aesthetic Timer | By Quan Bui</title>
+        <!-- <link rel="stylesheet" href="style.css"> -->
+        <style>
+            h1 {
+                display: block;
+                font-size: 20em;
+                font-family: monospace;
+                color: white;
+                text-align: center;  
+            }
+            #quotes {
+                display: block;
+            }
+            #time {
+                width: 20%;
+                 font-size: 10em;
+                 background-color: #dea5a4;
+                 border-top: none;
+                 border-left: none;
+                 border-right: none;
+                 border-bottom: 3px white solid;
+                 color: white;
+            }
+            #time:focus{
+                outline: none;
+            }
+            body {
+                margin: 0px;
+                background-color: #dea5a4;
+            }
+            #center {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding-top: 10vh;
+            }
+        </style>
     </head>
-    <style>
-        body {
-    margin: 0px;
-    box-sizing: border-box;
-    overflow: hidden;
-}
-.main {
-    text-align: center;
-    width: 100%;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.9);
-}
-.page1 {
-    width: 10vh;
-    height: 10vh;
-    background-color: seashell;
-    animation: animate 10s;
-    position: relative;
-}
-.page2 {
-    width: 10vh;
-    height: 10vh;
-    background-color: seashell;
-    animation:  animate 10s;
-    animation-delay: 0.1s;
-    position: relative;
-}
-.page3 {
-    width: 10vh;
-    height: 10vh;
-    background-color: seashell;
-    animation: animate 10s;
-    animation-delay: 0.2s;
-    position: relative;
-}
-
-@keyframes animate {
-    0%   { left:0vw; top:0vh;}
-  6.25%  { left:95vw; top:0vh;}
-  12.5%  { left:95vw; top:90vh;}
-  18.75%  { left:0vw; top:90vh;}
-  25% {left:0vw; top:10vh;}
-  31.25% {left:90vw; top:10vh;}
-  37.5% {left:90vw; top:80vh;}
-  43.75% {left:10vw; top:80vh;}
-  50% {left:10vw; top:20vh;}
-  56.25% {left:80vw; top:20vh;}
-  62.5% {left:80vw; top:70vh;}
-  68.5% {left: 20vw; top: 70vh;}
-  75% {left: 20vw; top: 30vh;}
-  81.25% {left: 70vw; top: 30vh;}
-  87.5% {left: 70vw; top: 60vh;}
-  93.75% {left: 30vw; top: 60vh;}
-  100% {left: 30vw; top: 50vh;
-  }
-
-
-}
-h1 {
-    color: white;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 100px;
-    opacity: 0.0;
-    animation: op 15s;
-    animation-delay: 10s;
-    margin: auto;
-}
-@keyframes op {
-    0% {opacity: 0.0;}
-    100% {opacity: 1.0;}
-
-}
-
-
-
-    </style>
+    
     <body>
-        <div class="main">
-        <div class="page1"></div>
-        <div class="page2"></div>
-        <div class="page3"></div>
-        <h1>JP IS GAY </h1>
-        </div>
+        <div id="center">
+            <input type="text" id="time">
+            <input type="button" onclick="starttimer()" placeholder="Start Timer">
+        </div>      
+        <script>
+        var timer;
+        var time;
+        var countdown;
+        function starttimer(){
+            timer = document.getElementById('time').value;
+            document.getElementById('center').innerHTML = "<h1 id='demo'></h1>";
+            time = timer * 60;
+            setInterval(updatecountdown, 1000);
+        }
+        function updatecountdown(){
+            if(time < 0){
+                clearInterval();
+            }
+            else {
+            const mintues = Math.floor(time / 60);
+            let seconds = time % 60;
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+            document.getElementById('demo').innerHTML = mintues + ":" + seconds;
+            time--;
+            }
+        
+        }
+        
+    </script>
     </body>
 </html>
