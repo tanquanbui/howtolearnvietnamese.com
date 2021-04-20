@@ -1,14 +1,15 @@
 <html>
     <head>
         <title>Aesthetic Timer | By Quan Bui</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- <link rel="stylesheet" href="style.css"> -->
         <style>
             h1 {
-                display: block;
                 font-size: 20em;
                 font-family: monospace;
-                color: white;
-                text-align: center;  
+                color: white;  
             }
             #quotes {
                 display: block;
@@ -18,8 +19,8 @@
             }
             #time {
                 font-family: monospace;
-                width: 30%;
-                 font-size: 10em;
+                width: 100%;
+                 font-size: 7em;
                  background-color: #dea5a4;
                  border-top: none;
                  border-left: none;
@@ -27,27 +28,89 @@
                  border-bottom: 3px white solid;
                  color: white;
                  display: block;
+                 margin: auto;
             }
             #time:focus{
                 outline: none;
+                transition: 1s;
+                border-bottom: 10px white solid;
+            }
+            h2{
+                font-family: 'Noto Sans JP', sans-serif;
+                color: white;
+                font-size: 4.5em;
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+            h3 {
+                font-family: 'Noto Sans JP', sans-serif;    
+                color: white;
+                font-size: 2em;
+                text-align: center;
+                margin-top: 10px;
+                margin-bottom: 10px;
             }
             body {
                 margin: 0px;
                 background-color: #dea5a4;
-            }
-            #center {
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                padding-top: 10vh;
+            }
+            input:-ms-input-placeholder, input::-webkit-input-placeholder{
+                text-align: center;
+            }
+            .outside {
+                width: 50%;
+
+            }
+            #button {
+                width:230px;
+                height: 100px;
+                color: #dea5a4;
+                background-color: white;
+                display: block;
+                margin: auto;
+                font-size: 3em;
+                border-radius: 10px;
+                font-family: monospace;
+                margin-top: 30px;
+            }
+
+            #center {
+                display: flex;
+            justify-content: center;
+            align-items: center;
+            }
+            @media only screen and (max-width: 600px){
+                h2 {
+                    font-size: 1.7em;
+                }
+                h3{
+                    font-size: 0.8em;
+                }
+                #button {
+                    transform: scale(0.5);
+                }
+                #time {
+                    font-size: 3.5em;
+                }
+                h1{
+                    font-size: 6em;
+                }
             }
         </style>
     </head>
     
     <body>
         <div id="center">
+            <div class="outside">
+            <h2>Aesthetic Timer</h2>
+            <h3>By Quan Bui</h3>
             <input type="text" id="time" placeholder="Minutes">
-            <label for="start"></label><input type="button" onclick="starttimer()">
+            <button id="button" onclick="starttimer()">Start</button> 
+
+        </div>
         </div>      
         <script>
         var timer;
@@ -62,6 +125,7 @@
         function updatecountdown(){
             if(time < 0){
                 clearInterval();
+                document.getElementById('demo').innerHTML = "Finished";
             }
             else {
             const mintues = Math.floor(time / 60);
