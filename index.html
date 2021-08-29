@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Aesthetic Timer | By Quan Bui</title>
+        <title id="demo2">Aesthetic Timer | By Quan Bui</title>
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -129,12 +129,14 @@
             if(time < 0){
                 clearInterval();
                 document.getElementById('demo').innerHTML = "Finished";
+                document.getElementById('demo2').innerHTML = "Finished";
             }
             else {
             const mintues = Math.floor(time / 60);
             let seconds = time % 60;
             seconds = seconds < 10 ? '0' + seconds : seconds;
             document.getElementById('demo').innerHTML = mintues + ":" + seconds;
+            document.getElementById('demo2').innerHTML = mintues + ":" + seconds;
             time--;
             }
         
